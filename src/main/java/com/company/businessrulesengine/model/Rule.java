@@ -19,6 +19,10 @@ public class Rule {
 		this.rule = rule;
 	}
 
+	public Rule() {
+
+	}
+
 	public String getRule() {
 		return rule;
 	}
