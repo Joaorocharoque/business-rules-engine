@@ -33,9 +33,8 @@ public class RuleService {
         return rejectedRules;
     }
 
-    public void save(Rule rule){
-        if(ruleEvaluatorStrategy.isValid(rule)){
-            ruleRepository.save(rule);
-        }
+    public Rule save(Rule rule){
+        ruleEvaluatorStrategy.validate(rule);
+        return ruleRepository.save(rule);
     }
 }

@@ -7,7 +7,7 @@ import javax.validation.Valid;
 
 public interface RuleEvaluatorStrategy {
 
-    boolean isValid(Rule rule);
+    void validate(Rule rule);
 
     RuleExecutionResponse evaluate(@Valid Rule rule, Product product);
 }

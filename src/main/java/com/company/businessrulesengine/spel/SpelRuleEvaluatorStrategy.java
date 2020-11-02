@@ -12,7 +12,7 @@ import javax.validation.Valid;
 public class SpelRuleEvaluatorStrategy implements RuleEvaluatorStrategy {
 
     @Override
-    public boolean isValid(Rule rule) {
+    public void validate(Rule rule) {
         try {
             new SpelExpressionParser().parseExpression(getCompleteExpression(rule));
 
@@ -22,8 +22,6 @@ public class SpelRuleEvaluatorStrategy implements RuleEvaluatorStrategy {
         } catch(IllegalStateException exception) {
             throw new InvalidExpressionException(exception.getMessage());
         }
-
-        return true;
     }
 
     private String getCompleteExpression(Rule rule) {
