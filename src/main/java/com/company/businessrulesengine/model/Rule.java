@@ -14,23 +14,20 @@ public class Rule {
 	
 	private String rule;
 
-	public Rule(String rule) {
-		super();
-		this.rule = rule;
-	}
+	private String errorDescription;
 
 	public Rule() {
+	}
 
+	public Long getId() {
+		return id;
 	}
 
 	public String getRule() {
 		return rule;
 	}
 
-	public void setRule(String rule) {
-		this.rule = rule;
+	public String getErrorDescription() {
+		return errorDescription;
 	}
-	
-	
-
 }

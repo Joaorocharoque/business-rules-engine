@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
@@ -18,38 +17,38 @@ public class Product {
 	private String description;
 	private int quantity;
 	private LocalDate expirationDate;
-	private BigDecimal purchasePrice;
-	private BigDecimal salePrice;
+	private Double purchasePrice;
+	private Double salePrice;
 
 	public Product() {
 	}
 
-	public Long id() {
-		return this.id;
+	public Long getId() {
+		return id;
 	}
 
-	public String name() {
-		return this.name;
+	public String getName() {
+		return name;
 	}
 
-	public String description() {
-		return this.description;
+	public String getDescription() {
+		return description;
 	}
 
-	public int quantity() {
-		return this.quantity;
+	public int getQuantity() {
+		return quantity;
 	}
 
-	public LocalDate expirationDate() {
-		return this.expirationDate;
+	public LocalDate getExpirationDate() {
+		return expirationDate;
 	}
 
-	public BigDecimal purchasePrice() {
-		return this.purchasePrice;
+	public Double getPurchasePrice() {
+		return purchasePrice;
 	}
 
-	public BigDecimal salePrice() {
-		return this.salePrice;
+	public Double getSalePrice() {
+		return salePrice;
 	}
 
 	public void setId(Long id) {
@@ -72,11 +71,11 @@ public class Product {
 		this.expirationDate = expirationDate;
 	}
 
-	public void setPurchasePrice(BigDecimal purchasePrice) {
+	public void setPurchasePrice(Double purchasePrice) {
 		this.purchasePrice = purchasePrice;
 	}
 
-	public void setSalePrice(BigDecimal salePrice) {
+	public void setSalePrice(Double salePrice) {
 		this.salePrice = salePrice;
 	}
 
@@ -86,8 +85,8 @@ public class Product {
 		private String description;
 		private int quantity;
 		private LocalDate expirationDate;
-		private BigDecimal purchasePrice;
-		private BigDecimal salePrice;
+		private Double purchasePrice;
+		private Double salePrice;
 
 		private Builder() {
 		}
@@ -121,12 +120,12 @@ public class Product {
 			return this;
 		}
 
-		public Builder purchasePrice(BigDecimal purchasePrice) {
+		public Builder purchasePrice(Double purchasePrice) {
 			this.purchasePrice = purchasePrice;
 			return this;
 		}
 
-		public Builder salePrice(BigDecimal salePrice) {
+		public Builder salePrice(Double salePrice) {
 			this.salePrice = salePrice;
 			return this;
 		}
