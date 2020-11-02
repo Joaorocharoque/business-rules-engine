@@ -1,0 +1,75 @@
+{
+	"info": {
+		"_postman_id": "163dcf2e-5b78-4082-a6f5-906c3acaaa44",
+		"name": "business-rules-checker",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/rule",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"product name\",\n  \"description\": \"description\",\n  \"quantity\": 0,\n  \"expirationDate\": \"2020-12-31\",\n  \"purchasePrice\": 12.00,\n  \"salePrice\": 20.00\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/product",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/rule",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"rule\": \"#text.isNotBlank(name)\",\n    \"errorDescription\": \"Nome do produto nao pode estar em branco\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/rule",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rule"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
