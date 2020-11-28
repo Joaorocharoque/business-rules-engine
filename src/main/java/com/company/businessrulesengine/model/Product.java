@@ -13,12 +13,13 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	private String name;
-	private String description;
-	private int quantity;
-	private LocalDate expirationDate;
-	private Double purchasePrice;
-	private Double salePrice;
+	private String nome;
+	private String descricao;
+	private String marca;
+	private int quantidade;
+	private LocalDate dataDeValidade;
+	private Double precoDeVenda;
+	private Double precoDeCompra;
 
 	public Product() {
 	}
@@ -27,66 +28,75 @@ public class Product {
 		return id;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public LocalDate getExpirationDate() {
-		return expirationDate;
-	}
-
-	public Double getPurchasePrice() {
-		return purchasePrice;
-	}
-
-	public Double getSalePrice() {
-		return salePrice;
-	}
-
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setExpirationDate(LocalDate expirationDate) {
-		this.expirationDate = expirationDate;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
-	public void setPurchasePrice(Double purchasePrice) {
-		this.purchasePrice = purchasePrice;
+	public String getMarca() {
+		return marca;
 	}
 
-	public void setSalePrice(Double salePrice) {
-		this.salePrice = salePrice;
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
+
+	public int getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+
+	public LocalDate getDataDeValidade() {
+		return dataDeValidade;
+	}
+
+	public void setDataDeValidade(LocalDate dataDeValidade) {
+		this.dataDeValidade = dataDeValidade;
+	}
+
+	public Double getPrecoDeVenda() {
+		return precoDeVenda;
+	}
+
+	public void setPrecoDeVenda(Double precoDeVenda) {
+		this.precoDeVenda = precoDeVenda;
+	}
+
+	public Double getPrecoDeCompra() {
+		return precoDeCompra;
+	}
+
+	public void setPrecoDeCompra(Double precoDeCompra) {
+		this.precoDeCompra = precoDeCompra;
 	}
 
 	public static final class Builder {
 		private Long id;
-		private String name;
-		private String description;
-		private int quantity;
-		private LocalDate expirationDate;
-		private Double purchasePrice;
-		private Double salePrice;
+		private String nome;
+		private String descricao;
+		private String marca;
+		private int quantidade;
+		private LocalDate dataDeValidade;
+		private Double precoDeVenda;
+		private Double precoDeCompra;
 
 		private Builder() {
 		}
@@ -100,45 +110,51 @@ public class Product {
 			return this;
 		}
 
-		public Builder name(String name) {
-			this.name = name;
+		public Builder nome(String nome) {
+			this.nome = nome;
 			return this;
 		}
 
-		public Builder description(String description) {
-			this.description = description;
+		public Builder descricao(String descricao) {
+			this.descricao = descricao;
 			return this;
 		}
 
-		public Builder quantity(int quantity) {
-			this.quantity = quantity;
+		public Builder marca(String marca) {
+			this.marca = marca;
 			return this;
 		}
 
-		public Builder expirationDate(LocalDate expirationDate) {
-			this.expirationDate = expirationDate;
+		public Builder quantidade(int quantidade) {
+			this.quantidade = quantidade;
 			return this;
 		}
 
-		public Builder purchasePrice(Double purchasePrice) {
-			this.purchasePrice = purchasePrice;
+		public Builder dataDeValidade(LocalDate dataDeValidade) {
+			this.dataDeValidade = dataDeValidade;
 			return this;
 		}
 
-		public Builder salePrice(Double salePrice) {
-			this.salePrice = salePrice;
+		public Builder precoDeVenda(Double precoDeVenda) {
+			this.precoDeVenda = precoDeVenda;
+			return this;
+		}
+
+		public Builder precoDeCompra(Double precoDeCompra) {
+			this.precoDeCompra = precoDeCompra;
 			return this;
 		}
 
 		public Product build() {
 			Product product = new Product();
-			product.id = this.id;
-			product.expirationDate = this.expirationDate;
-			product.quantity = this.quantity;
-			product.description = this.description;
-			product.salePrice = this.salePrice;
-			product.purchasePrice = this.purchasePrice;
-			product.name = this.name;
+			product.setId(id);
+			product.setNome(nome);
+			product.setDescricao(descricao);
+			product.setMarca(marca);
+			product.setQuantidade(quantidade);
+			product.setDataDeValidade(dataDeValidade);
+			product.setPrecoDeVenda(precoDeVenda);
+			product.setPrecoDeCompra(precoDeCompra);
 			return product;
 		}
 	}
