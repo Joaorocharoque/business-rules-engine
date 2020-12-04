@@ -1,6 +1,7 @@
 package com.company.businessrulesengine.application;
 
 import com.company.businessrulesengine.model.Product;
+import com.company.businessrulesengine.model.ProductNotFoundException;
 import com.company.businessrulesengine.model.ProductRepository;
 import com.company.businessrulesengine.spel.RuleExecutionResponse;
 import org.apache.commons.collections4.CollectionUtils;
@@ -8,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.List;
 
 @Service
 public class ProductService {
@@ -25,5 +25,18 @@ public class ProductService {
             productRepository.save(product);
         }
         return errors;
+    }
+
+    public void delete(Long id){
+        productRepository.deleteById(id);
+    }
+
+    public Product findById(Long id) {
+        return productRepository.findById(id)
+                .orElseThrow(() -> new ProductNotFoundException(id));
+    }
+
+    public Collection<Product> findAll() {
+        return productRepository.findAll();
     }
 }

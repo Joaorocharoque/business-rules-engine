@@ -1,13 +1,12 @@
 package com.company.businessrulesengine.application;
 
-import com.company.businessrulesengine.model.RuleNotFoundException;
 import com.company.businessrulesengine.model.Product;
 import com.company.businessrulesengine.model.Rule;
+import com.company.businessrulesengine.model.RuleNotFoundException;
 import com.company.businessrulesengine.model.RuleRepository;
-import com.company.businessrulesengine.spel.RuleExecutionResponse;
 import com.company.businessrulesengine.spel.RuleEvaluatorStrategy;
+import com.company.businessrulesengine.spel.RuleExecutionResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
