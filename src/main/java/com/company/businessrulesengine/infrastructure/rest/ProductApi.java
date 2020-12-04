@@ -1,9 +1,10 @@
 package com.company.businessrulesengine.infrastructure.rest;
 
 import com.company.businessrulesengine.application.ProductService;
+import com.company.businessrulesengine.application.SaveProductResponseDTO;
 import com.company.businessrulesengine.model.Product;
-import com.company.businessrulesengine.spel.RuleExecutionResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,10 +18,10 @@ public class ProductApi {
 	private ProductService productService;
 
 	@PostMapping
-	public ResponseEntity<Collection<RuleExecutionResponse>> create(@RequestBody Product product) {
-		Collection<RuleExecutionResponse> errors = productService.save(product);
+	public ResponseEntity<SaveProductResponseDTO> create(@RequestBody Product product) {
+		SaveProductResponseDTO response = productService.save(product);
 
-		return ResponseEntity.ok(errors);
+		return ResponseEntity.status(HttpStatus.CREATED).body(response);
 	}
 
 	@DeleteMapping("/{id}")

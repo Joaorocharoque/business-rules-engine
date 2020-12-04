@@ -19,12 +19,14 @@ public class ProductService {
     @Autowired
     private ProductRepository productRepository;
 
-    public Collection<RuleExecutionResponse> save(Product product){
+    public SaveProductResponseDTO save(Product product){
         Collection<RuleExecutionResponse> errors = ruleService.applyRules(product);
         if(CollectionUtils.isEmpty(errors)){
-            productRepository.save(product);
+            Product savedProduct = productRepository.save(product);
+            return new SaveProductResponseDTO(savedProduct.getId());
+
         }
-        return errors;
+        return new SaveProductResponseDTO(errors);
     }
 
     public void delete(Long id){
