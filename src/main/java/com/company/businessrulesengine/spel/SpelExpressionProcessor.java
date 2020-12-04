@@ -10,7 +10,7 @@ import org.springframework.expression.spel.support.StandardEvaluationContext;
 
 public class SpelExpressionProcessor implements ExpressionProcessor {
 
-    protected static final String STRING_UTILS_VAR = "text";
+    protected static final String TEXT_UTILS = "text";
     protected static final String DATE_VAR = "date";
 
     private String expression;
@@ -23,7 +23,7 @@ public class SpelExpressionProcessor implements ExpressionProcessor {
 
         context.addPropertyAccessor(new MapAccessor());
 
-        context.setVariable(STRING_UTILS_VAR, new StringUtils());
+        context.setVariable(TEXT_UTILS, new TextUtils());
         context.setVariable(DATE_VAR, new DateUtils());
     }
 

@@ -21,4 +21,10 @@ public class RuleApi {
 		return ResponseEntity.ok(savedRule);
 	}
 
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Rule> delete(@PathVariable Long id) {
+		ruleService.delete(id);
+		return ResponseEntity.noContent().build();
+	}
+
 }
