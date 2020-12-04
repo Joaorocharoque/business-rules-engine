@@ -37,4 +37,8 @@ public class RuleService {
         ruleEvaluatorStrategy.validate(rule);
         return ruleRepository.save(rule);
     }
+
+    public void delete(Long id){
+        ruleRepository.deleteById(id);
+    }
 }
