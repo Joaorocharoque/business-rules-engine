@@ -39,4 +39,10 @@ public class ProductApi {
 		return ResponseEntity.ok(productService.findAll());
 	}
 
+	@PutMapping("/{id}")
+	public ResponseEntity update(@RequestBody Product newProduct, @PathVariable Long id) {
+		productService.update(newProduct, id);
+		return ResponseEntity.noContent().build();
+	}
+
 }

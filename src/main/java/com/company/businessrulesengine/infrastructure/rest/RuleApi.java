@@ -22,19 +22,25 @@ public class RuleApi {
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Rule> delete(@PathVariable Long id) {
+	public ResponseEntity delete(@PathVariable Long id) {
 		ruleService.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<Rule> findById(@PathVariable Long id) {
+	public ResponseEntity findById(@PathVariable Long id) {
 		return ResponseEntity.ok(ruleService.findById(id));
 	}
 
 	@GetMapping
 	public ResponseEntity<Collection<Rule>> findById() {
 		return ResponseEntity.ok(ruleService.findAll());
+	}
+
+	@PutMapping("/{id}")
+	public ResponseEntity update(@RequestBody Rule newRule, @PathVariable Long id) {
+		ruleService.update(newRule, id);
+		return ResponseEntity.noContent().build();
 	}
 
 }

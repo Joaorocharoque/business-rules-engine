@@ -51,4 +51,11 @@ public class RuleService {
     public Collection<Rule> findAll() {
         return ruleRepository.findAll();
     }
+
+    public void update(Rule newRule, Long id) {
+        Rule rule = ruleRepository.findById(id)
+                .map(oldRule -> new Rule(id, newRule.getRule(), newRule.getErrorDescription()))
+                .orElseThrow(() -> new RuleNotFoundException(id));
+        ruleRepository.save(rule);
+    }
 }

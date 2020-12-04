@@ -39,4 +39,20 @@ public class ProductService {
     public Collection<Product> findAll() {
         return productRepository.findAll();
     }
+
+    public void update(Product newProduct, Long id) {
+        Product product = productRepository.findById(id)
+                .map(oldProduct -> Product.Builder.aProduct()
+                        .id(id)
+                        .dataDeValidade(newProduct.getDataDeValidade())
+                        .descricao(newProduct.getDescricao())
+                        .marca(newProduct.getMarca())
+                        .nome(newProduct.getNome())
+                        .precoDeCompra(newProduct.getPrecoDeCompra())
+                        .precoDeVenda(newProduct.getPrecoDeVenda())
+                        .quantidade(newProduct.getQuantidade())
+                        .build())
+                .orElseThrow(() -> new ProductNotFoundException(id));
+        productRepository.save(product);
+    }
 }
