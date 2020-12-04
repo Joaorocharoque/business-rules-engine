@@ -1,6 +1,7 @@
 package com.company.businessrulesengine.infrastructure.rest;
 
 import com.company.businessrulesengine.application.RuleService;
+import com.company.businessrulesengine.application.SaveRuleResponseDTO;
 import com.company.businessrulesengine.model.Rule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,8 +17,8 @@ public class RuleApi {
 	private RuleService ruleService;
 	
 	@PostMapping
-	public ResponseEntity<Rule> create(@RequestBody Rule rule) {
-		Rule savedRule = ruleService.save(rule);
+	public ResponseEntity<SaveRuleResponseDTO> create(@RequestBody Rule rule) {
+		SaveRuleResponseDTO savedRule = ruleService.save(rule);
 		return ResponseEntity.ok(savedRule);
 	}
 

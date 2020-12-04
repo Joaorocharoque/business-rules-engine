@@ -34,9 +34,10 @@ public class RuleService {
         return rejectedRules;
     }
 
-    public Rule save(Rule rule){
+    public SaveRuleResponseDTO save(Rule rule){
         ruleEvaluatorStrategy.validate(rule);
-        return ruleRepository.save(rule);
+        Rule savedRule = ruleRepository.save(rule);
+        return new SaveRuleResponseDTO(rule.getId());
     }
 
     public void delete(Long id){
