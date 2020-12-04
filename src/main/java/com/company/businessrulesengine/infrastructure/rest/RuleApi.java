@@ -2,7 +2,6 @@ package com.company.businessrulesengine.infrastructure.rest;
 
 import com.company.businessrulesengine.application.RuleService;
 import com.company.businessrulesengine.model.Rule;
-import com.company.businessrulesengine.model.RuleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +14,6 @@ public class RuleApi {
 	private RuleService ruleService;
 	
 	@PostMapping
-	@ResponseBody
 	public ResponseEntity<Rule> create(@RequestBody Rule rule) {
 		Rule savedRule = ruleService.save(rule);
 		return ResponseEntity.ok(savedRule);
@@ -25,6 +23,11 @@ public class RuleApi {
 	public ResponseEntity<Rule> delete(@PathVariable Long id) {
 		ruleService.delete(id);
 		return ResponseEntity.noContent().build();
+	}
+
+	@GetMapping("/{id}")
+	public ResponseEntity<Rule> findById(@PathVariable Long id) {
+		return ResponseEntity.ok(ruleService.findById(id));
 	}
 
 }
