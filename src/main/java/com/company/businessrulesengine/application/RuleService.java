@@ -48,4 +48,8 @@ public class RuleService {
         return ruleRepository.findById(id)
                 .orElseThrow(() -> new RuleNotFoundException(id));
     }
+
+    public Collection<Rule> findAll() {
+        return ruleRepository.findAll();
+    }
 }
