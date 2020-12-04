@@ -1,11 +1,13 @@
 package com.company.businessrulesengine.application;
 
+import com.company.businessrulesengine.model.RuleNotFoundException;
 import com.company.businessrulesengine.model.Product;
 import com.company.businessrulesengine.model.Rule;
 import com.company.businessrulesengine.model.RuleRepository;
 import com.company.businessrulesengine.spel.RuleExecutionResponse;
 import com.company.businessrulesengine.spel.RuleEvaluatorStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -40,5 +42,10 @@ public class RuleService {
 
     public void delete(Long id){
         ruleRepository.deleteById(id);
+    }
+
+    public Rule findById(Long id) {
+        return ruleRepository.findById(id)
+                .orElseThrow(() -> new RuleNotFoundException(id));
     }
 }
