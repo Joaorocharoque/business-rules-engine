@@ -19,6 +19,12 @@ public class Rule {
 	public Rule() {
 	}
 
+	public Rule(Long id, String rule, String errorDescription) {
+		this.id = id;
+		this.rule = rule;
+		this.errorDescription = errorDescription;
+	}
+
 	public Long getId() {
 		return id;
 	}

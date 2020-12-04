@@ -1,5 +1,7 @@
 package com.company.businessrulesengine.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,7 +19,10 @@ public class Product {
 	private String descricao;
 	private String marca;
 	private int quantidade;
+
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
 	private LocalDate dataDeValidade;
+
 	private Double precoDeVenda;
 	private Double precoDeCompra;
 

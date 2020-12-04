@@ -1,13 +1,12 @@
 package com.company.businessrulesengine.application;
 
-import com.company.businessrulesengine.model.RuleNotFoundException;
 import com.company.businessrulesengine.model.Product;
 import com.company.businessrulesengine.model.Rule;
+import com.company.businessrulesengine.model.RuleNotFoundException;
 import com.company.businessrulesengine.model.RuleRepository;
-import com.company.businessrulesengine.spel.RuleExecutionResponse;
 import com.company.businessrulesengine.spel.RuleEvaluatorStrategy;
+import com.company.businessrulesengine.spel.RuleExecutionResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -35,9 +34,10 @@ public class RuleService {
         return rejectedRules;
     }
 
-    public Rule save(Rule rule){
+    public SaveRuleResponseDTO save(Rule rule){
         ruleEvaluatorStrategy.validate(rule);
-        return ruleRepository.save(rule);
+        Rule savedRule = ruleRepository.save(rule);
+        return new SaveRuleResponseDTO(rule.getId());
     }
 
     public void delete(Long id){
@@ -51,5 +51,12 @@ public class RuleService {
 
     public Collection<Rule> findAll() {
         return ruleRepository.findAll();
+    }
+
+    public void update(Rule newRule, Long id) {
+        Rule rule = ruleRepository.findById(id)
+                .map(oldRule -> new Rule(id, newRule.getRule(), newRule.getErrorDescription()))
+                .orElseThrow(() -> new RuleNotFoundException(id));
+        ruleRepository.save(rule);
     }
 }
