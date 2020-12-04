@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
+
 @RestController
 @RequestMapping("/rule")
 public class RuleApi {
@@ -28,6 +30,11 @@ public class RuleApi {
 	@GetMapping("/{id}")
 	public ResponseEntity<Rule> findById(@PathVariable Long id) {
 		return ResponseEntity.ok(ruleService.findById(id));
+	}
+
+	@GetMapping
+	public ResponseEntity<Collection<Rule>> findById() {
+		return ResponseEntity.ok(ruleService.findAll());
 	}
 
 }
